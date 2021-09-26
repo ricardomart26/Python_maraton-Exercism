@@ -1,14 +1,21 @@
-
+def replace_char(src, index, new_char):
+    dest = src[:index] + new_char + src[index + 1: len(src)]
+    return dest
+    
 def capitalize_title(title):
     """
 
     :param title: str title string that needs title casing
     :return:  str title string in title case (first letters capitalized)
     """
-
-    return title.upper()
-    pass
-
+    size = len(title)
+    title = title.split(" ")
+    dest = ""
+    for l in title:
+        dest += replace_char(l, 0, l[0].upper())
+        if len(dest) != size:
+            dest += " "
+    return dest
 
 def check_sentence_ending(sentence):
     """
@@ -20,7 +27,6 @@ def check_sentence_ending(sentence):
         return True
     else:
         return False
-    pass
 
 
 def clean_up_spacing(sentence):
@@ -29,10 +35,7 @@ def clean_up_spacing(sentence):
     :param sentence: str a sentence to clean of leading and trailing space characters.
     :return: str a sentence that has been cleaned of leading and trailing space characters.
     """
-    size = len(sentence)
-    for i in range(0, size):
-        for i == ' ': 
-    pass
+    return sentence.strip()
 
 
 def replace_word_choice(sentence, old_word, new_word):
@@ -43,7 +46,4 @@ def replace_word_choice(sentence, old_word, new_word):
     :param old_word: str word to replace
     :return:  str input sentence with new words in place of old words
     """
-
-    pass
-
-print(check_sentence_ending("teste."))
+    return sentence.replace(old_word, new_word)
