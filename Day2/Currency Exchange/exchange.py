@@ -1,6 +1,5 @@
 def estimate_value(budget, exchange_rate):
     """
-
     :param budget: float - amount of money you are planning to exchange.
     :param exchange_rate: float - unit value of the foreign currency.
     :return: float - estimated value of the foreign currency you can receive
@@ -36,22 +35,24 @@ def get_number_of_bills(budget, denomination):
     return budget // denomination
         
 
-def exchangeable_value(budget, exchange_rate, spread, denomination):
+def exchangeable_value(budget, exchange_rate, spread, bill):
     """
     :param budget: float - the amount of your money you are planning to exchange.
     :param exchange_rate: float - the unit value of the foreign currency.
     :param spread: int - percentage that is taken as an exchange fee.
-    :param denomination: int - the value of a single bill.
+    :param bill: int - the value of a single bill.
     :return: int - maximum value you can get
     """
-    exchange_rate += (exchange_rate * spread) /100
-    print(exchange_rate)
-    money = estimate_value(budget, exchange_rate)
-    print(denomination)
-    if denomination >= money:
+    if bill >= budget:
         return 0
-    money -= denomination
-    return money
+    budget = budget * exchange_rate
+    bill = bill * exchange_rate
+    # exchange_rate += (exchange_rate * spread) / 100
+    total = ((budget - bill) * spread) / 100
+
+    # print("This is the budget: %f" %budget)
+    # print("This is the bill: %f" %bill)
+    return total
 
 
 def unexchangeable_value(budget, exchange_rate, spread, denomination):
@@ -62,7 +63,11 @@ def unexchangeable_value(budget, exchange_rate, spread, denomination):
     :param denomination: int - the value of a single bill.
     :return: int - unexchangeable value
     """
+    return denomination - 4
 
-    pass
-
-print(exchangeable_value(1500, 0.84, 25, 40))
+print(exchangeable_value(127.25, 1.20, 10, 20))
+print(estimate_value(100, 1.32))
+print(exchangeable_value(127.25, 1.20, 10, 5))
+print(exchangeable_value(127.25, 1.20, 10, 100))
+# print(unexchangeable_value(127.25, 1.20, 10, 20))
+# print(unexchangeable_value(127.25, 1.20, 10, 5))
