@@ -42,8 +42,13 @@ def letter_grades(highest):
     :param highest: integer of highest exam score.
     :return: list of integer score thresholds for each F-A letter grades.
     """
-
-    pass
+    arr = list()
+    diff = highest - 40
+    ret = round(diff / 4)
+    start = 41
+    for i in range(4):
+        arr.append(start+(ret * i))
+    return arr
 
 
 def student_ranking(student_scores, student_names):
@@ -65,3 +70,5 @@ def perfect_score(student_info):
 
 
 print(round_scores([90.33, 40.5, 55.44, 70.05, 30.55, 25.45, 80.45, 95.3, 38.7, 40.3]))
+print(letter_grades(100))
+print(letter_grades(88))
