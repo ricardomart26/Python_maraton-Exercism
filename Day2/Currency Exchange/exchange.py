@@ -35,24 +35,23 @@ def get_number_of_bills(budget, denomination):
     return budget // denomination
         
 
-def exchangeable_value(budget, exchange_rate, spread, bill):
+def exchangeable_value(budget, exchange_rate, spread, denomination):
     """
     :param budget: float - the amount of your money you are planning to exchange.
     :param exchange_rate: float - the unit value of the foreign currency.
     :param spread: int - percentage that is taken as an exchange fee.
-    :param bill: int - the value of a single bill.
+    :param denomination: int - the value of a single bill.
     :return: int - maximum value you can get
     """
-    if bill >= budget:
+    if denomination >= budget:
         return 0
-    budget = budget * exchange_rate
-    bill = bill * exchange_rate
-    # exchange_rate += (exchange_rate * spread) / 100
-    total = ((budget - bill) * spread) / 100
+    exchange_fee = (exchange_rate * spread) / 100
+    exchange_fee += exchange_rate
 
-    # print("This is the budget: %f" %budget)
-    # print("This is the bill: %f" %bill)
-    return total
+    money = estimate_value(budget, exchange_fee)
+    denomination = estimate_value(denomination, exchange_fee)
+    return money - denomination
+
 
 
 def unexchangeable_value(budget, exchange_rate, spread, denomination):
@@ -66,7 +65,7 @@ def unexchangeable_value(budget, exchange_rate, spread, denomination):
     return denomination - 4
 
 print(exchangeable_value(127.25, 1.20, 10, 20))
-print(estimate_value(100, 1.32))
+# print(estimate_value(100, 1.32))
 print(exchangeable_value(127.25, 1.20, 10, 5))
 print(exchangeable_value(127.25, 1.20, 10, 100))
 # print(unexchangeable_value(127.25, 1.20, 10, 20))
