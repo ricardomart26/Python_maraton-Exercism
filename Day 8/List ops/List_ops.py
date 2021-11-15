@@ -18,10 +18,7 @@ def length(list):
 
 
 def map(function, list):
-    ret = []
-    for i in list:
-        ret.append(function(i))
-    return ret
+    return [function(i) for i in list]
 
 def foldl(function, list, initial):
     accumulator = 0
@@ -44,7 +41,7 @@ def foldr(function, list, initial):
     s_i = 0
     for x, i in enumerate(list[::-1]):
         if x != 0:
-            acc = acc + function(s_i, i)
+            acc += function(s_i, i)
         s_i = i
     return acc
 

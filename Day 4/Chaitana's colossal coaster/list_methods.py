@@ -25,9 +25,8 @@ def add_me_to_the_queue(express_queue, normal_queue, ticket_type, person_name):
     if ticket_type == 1:
         express_queue.append(person_name)
         return express_queue
-    else:
-        normal_queue.append(person_name)
-        return normal_queue
+    normal_queue.append(person_name)
+    return normal_queue
 
 
 def find_my_friend(queue, friend_name):
@@ -48,8 +47,7 @@ def add_me_with_my_friends(queue, index, person_name):
     :param person_name: str - the name to add.
     :return: list - queue updated with new name.
     """
-    queue.insert(index, person_name)
-    return queue
+    return queue.insert(index, person_name)
 
 
 def remove_the_mean_person(queue, person_name):
@@ -59,8 +57,7 @@ def remove_the_mean_person(queue, person_name):
     :param person_name: str - name of mean person.
     :return:  list - queue update with the mean persons name removed.
     """
-    queue.remove(person_name)
-    return queue
+    return queue.remove(person_name)
 
 def how_many_namefellows(queue, person_name):
     """

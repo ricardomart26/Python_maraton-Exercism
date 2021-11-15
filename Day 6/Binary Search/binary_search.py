@@ -21,8 +21,4 @@ def find(search_list, value):
             lower = middle + 1
     raise ValueError("not found.")
 
-
-
-# print(find([1, 3, 4, 6, 8, 9, 11], 11))
-# print(find([1, 2, 3, 4, 5, 6, 8], 1))
 print(find([1, 3, 4, 6, 8, 9, 11], 7))

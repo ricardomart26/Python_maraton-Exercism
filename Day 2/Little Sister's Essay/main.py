@@ -1,6 +1,5 @@
 def replace_char(src, index, new_char):
-    dest = src[:index] + new_char + src[index + 1: len(src)]
-    return dest
+    return src[:index] + new_char + src[index + 1: len(src)]
     
 def capitalize_title(title):
     """
@@ -23,10 +22,7 @@ def check_sentence_ending(sentence):
     :param sentence: str a sentence to check.
     :return:  bool True if punctuated correctly with period, False otherwise.
     """
-    if sentence[-1] == '.':
-        return True
-    else:
-        return False
+    return sentence[-1] == '.'
 
 
 def clean_up_spacing(sentence):

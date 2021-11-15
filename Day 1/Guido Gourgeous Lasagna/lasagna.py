@@ -19,16 +19,10 @@ def bake_time_remaining(time):
     based on the `EXPECTED_BAKE_TIME`.
     """
     return EXPECTED_BAKE_TIME - time
-    pass
 
 # TODO: define the 'preparation_time_in_minutes()' function
 #       and consider using 'PREPARATION_TIME' here
 def	preparation_time_in_minutes(layers):
-
-    """layers = numero de layers
-    
-    :elaped ... = tempo no forno
-    """
     if layers == 0:
         return 0
     elif layers > 0:
@@ -37,9 +31,4 @@ def	preparation_time_in_minutes(layers):
 # TODO: define the 'elapsed_time_in_minutes()' function
 
 def elapsed_time_in_minutes(layers, elapsed_bake_time):
-    
-    """layers = numero de layers
-    
-    :elaped ... = tempo no forno
-    """
     return elapsed_bake_time + preparation_time_in_minutes(layers)

@@ -1,6 +1,6 @@
 def abbreviate(words):
     splited = words.split()
-    new_splited = list()
+    new_splited = []
     for i in splited:
         if "-" in i:
             new_splited.extend(i.split("-"))

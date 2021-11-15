@@ -11,11 +11,7 @@ def count_failed_students(student_scores):
     :param student_scores: list of integer student scores.
     :return: integer count of student scores at or below 40.
     """
-    count = 0
-    for i in student_scores:
-        if i <= 40:
-            count += 1
-    return count
+    return sum(i <= 40 for i in student_scores)
 
 
 def above_threshold(student_scores, threshold):
@@ -24,15 +20,11 @@ def above_threshold(student_scores, threshold):
     :param threshold :  integer
     :return: list of integer scores that are at or above the "best" threshold.
     """
-    new_list = list()
-    if (len(student_scores) == 0):
+    if not student_scores:
         return []
     if max(student_scores) < threshold:
         return []
-    for i in student_scores:
-        if i >= threshold:
-            new_list.append(i)
-    return new_list
+    return [i for i in student_scores if i >= threshold]
 
 
 def letter_grades(highest):
@@ -40,13 +32,8 @@ def letter_grades(highest):
     :param highest: integer of highest exam score.
     :return: list of integer score thresholds for each F-A letter grades.
     """
-    arr = list()
-    diff = highest - 40
-    ret = round(diff / 4)
-    start = 41
-    for i in range(4):
-        arr.append(start+(ret * i))
-    return arr
+    ret = round(highest - 40 / 4)
+    return [41 +(ret * i) for i in range(4)]
 
 def student_ranking(student_scores, student_names):
     """
@@ -54,12 +41,10 @@ def student_ranking(student_scores, student_names):
      :param student_names: list of names in descending order by exam score.
      :return: list of strings in format ["<rank>. <student name>: <score>"].
      """
-    string = list()
-    index = 0
-    for i in student_names:
-        string.append(str(index + 1) + ". " + i + ": " + str(student_scores[index]))  
-        index += 1
-    return string
+    return [
+        str(index + 1) + ". " + i + ": " + str(student_scores[index])
+        for index, i in enumerate(student_names)
+    ]
 
 
 def perfect_score(student_info):

@@ -23,7 +23,5 @@ def is_paired(input_string):
             par -= 1
         elif i == ")":
             return False
-    if not brackets and not c_brackets and not par:
-        return True
-    return False
+    return not brackets and not c_brackets and not par
 

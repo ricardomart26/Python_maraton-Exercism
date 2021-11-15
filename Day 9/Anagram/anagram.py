@@ -1,5 +1,5 @@
 def find_anagrams(word, candidates):
-    ret = list()
+    ret = []
     size = len(word) - 1
     word = word.lower()
     for i in candidates:
@@ -9,15 +9,11 @@ def find_anagrams(word, candidates):
         for j in range(len(word)):
             if word[j] not in i_low:
                 break
-            else:
-                x = 0
-                while x < len(i_low) - 1:
-                    if word[j] == i_low[x]:
-                        if x == 0:
-                            i_low = i_low[1:]
-                        else:
-                            i_low = i_low[:x] + i_low[x:] 
-                    x += 1
+            x = 0
+            while x < len(i_low) - 1:
+                if word[j] == i_low[x]:
+                    i_low = i_low[1:] if x == 0 else i_low[:x] + i_low[x:]
+                x += 1
         if j == len(word) - 1:
             ret.append(i)
     return ret

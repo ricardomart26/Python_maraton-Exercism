@@ -1,7 +1,5 @@
 def isvowel(c):
-    if (c in 'AEIOUYaeiouy'):
-        return True
-    return False
+    return (c in 'AEIOUYaeiouy')
 
 def cmp(str, str2, len):
     for i in range(len):

@@ -1,36 +1,35 @@
 def color_code(color):
-    if color == "Black" or color == "black":
+    if color in ["Black", "black"]:
         return 0
-    elif color == "Brown" or color == "brown":
+    elif color in ["Brown", "brown"]:
         return 1
-    elif color == "Red" or color == "red":
+    elif color in ["Red", "red"]:
         return 2
-    elif color == "Orange" or color == "orange":
+    elif color in ["Orange", "orange"]:
         return 3
-    elif color == "Yellow" or color == "yellow":
+    elif color in ["Yellow", "yellow"]:
         return 4
-    elif color == "Green" or color == "green":
+    elif color in ["Green", "green"]:
         return 5
-    elif color == "Blue" or color == "blue":
+    elif color in ["Blue", "blue"]:
         return 6
-    elif color == "Violet" or color == "violet":
+    elif color in ["Violet", "violet"]:
         return 7
-    elif color == "Grey" or color == "grey":
+    elif color in ["Grey", "grey"]:
         return 8
     return 9
 
 
 def colors():
-    list = [
-    "black",
-    "brown", 
-    "red", 
-    "orange", 
-    "yellow",
-    "green",
-    "blue",
-    "violet",
-    "grey",
-    "white",
-]
-    return list
+    return     [
+        "black",
+        "brown", 
+        "red", 
+        "orange", 
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "grey",
+        "white",
+    ]

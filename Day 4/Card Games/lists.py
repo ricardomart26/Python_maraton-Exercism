@@ -20,20 +20,14 @@ def list_contains_round(rounds, number):
     :param number: int - round number.
     :return:  bool - was the round played?
     """
-    for i in rounds:
-        if i == number:
-            return True
-    return False
+    return any(i == number for i in rounds)
 
 def card_average(hand):
     """
     :param hand: list - cards in hand.
     :return:  float - average value of the cards in the hand.
     """
-    x = 0
-    for i in hand:
-        x += i
-    return x/len(hand)
+    return sum(hand)/len(hand)
 
 
 def approx_average_is_average(hand):
@@ -44,16 +38,15 @@ def approx_average_is_average(hand):
     right_avg = card_average(hand)
     f_l = (hand[0] + hand[-1]) / 2
     middle = hand[round(len(hand)/2)]
-    if f_l == right_avg or middle == right_avg:
-        return True
-    return False
+    return f_l == right_avg or middle == right_avg
 
 def average_even_is_average_odd(hand):
     """
     :param hand: list - cards in hand.
     :return: bool - are even and odd averages equal?
     """
-    pass
+    if len(hand) % 2 in [0, 1]:
+        return approx_average_is_average(hand)
 
 
 def maybe_double_last(hand):
@@ -61,4 +54,7 @@ def maybe_double_last(hand):
     :param hand: list - cards in hand.
     :return: list - hand with Jacks (if present) value doubled.
     """
-    pass
+    if hand[-1] == 11:
+        hand[-1] *= 2
+    return hand
+

@@ -17,11 +17,10 @@ def check_equality(sublist, superlist, len_sup, ret):
             j += 1
             if size - i == j:
                 return ret
+        elif sublist[0] in superlist[index+i:]:
+            index = superlist.index(sublist[0], index + i)
         else:
-            if sublist[0] in superlist[index+i:]:
-                index = superlist.index(sublist[0], index + i)
-            else:
-                break
+            break
         if index + i >= size:
             return ret
     return UNEQUAL
